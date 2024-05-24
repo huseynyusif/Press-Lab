@@ -3,7 +3,7 @@ package az.news.presslab.controller.category;
 import az.news.presslab.service.category.CategoryReadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import response.CategoryReadResponse;
+import az.news.presslab.response.CategoryReadResponse;
 
 import java.util.List;
 

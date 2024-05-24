@@ -5,7 +5,7 @@ import az.news.presslab.entity.MainCategoryEntity;
 import az.news.presslab.request.CategoryCreateRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import response.CategoryReadResponse;
+import az.news.presslab.response.CategoryReadResponse;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {

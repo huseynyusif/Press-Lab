@@ -5,7 +5,7 @@ import az.news.presslab.entity.NewsEntity;
 import az.news.presslab.request.NewsCreateRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import response.NewsReadResponse;
+import az.news.presslab.response.NewsReadResponse;
 
 @Mapper(componentModel = "spring")
 public interface NewsMapper {

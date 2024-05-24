@@ -4,10 +4,12 @@ import az.news.presslab.entity.NewsEntity;
 import az.news.presslab.service.news.NewsReadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import response.NewsReadResponse;
+import az.news.presslab.response.NewsReadResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/news")
@@ -26,8 +28,9 @@ public class NewsReadController {
     }
 
     @GetMapping("/{id}")
-    public NewsReadResponse getNewsById(@PathVariable int id) {
-        return newsReadService.getNewsById(id);
+    public ResponseEntity<NewsReadResponse> getNewsById(@PathVariable int id) {
+        Optional<NewsReadResponse> news = Optional.ofNullable(newsReadService.getNewsById(id));
+        return news.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(404).body(null));
     }
 
     @GetMapping("/category/{categoryId}")

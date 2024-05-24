@@ -1,4 +1,4 @@
-package response;
+package az.news.presslab.response;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,5 +21,6 @@ public class NewsReadResponse {
     private String author;
     private LocalDate publicationDate;
     private String imagePath;
+    private int views;
     private int categoryId;
 }

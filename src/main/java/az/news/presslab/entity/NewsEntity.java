@@ -35,7 +35,7 @@ public class NewsEntity {
     @Column(name = "fkCategory")
     private int categoryId;
 
-//    private int views = 0;
+    private int views;
 
     private String imagePath;
 }

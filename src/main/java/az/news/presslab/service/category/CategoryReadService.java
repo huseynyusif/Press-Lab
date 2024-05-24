@@ -1,14 +1,12 @@
 package az.news.presslab.service.category;
 
-import az.news.presslab.entity.CategoryEntity;
 import az.news.presslab.mapper.CategoryMapper;
 import az.news.presslab.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import response.CategoryReadResponse;
+import az.news.presslab.response.CategoryReadResponse;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

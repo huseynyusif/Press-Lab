@@ -1,5 +1,7 @@
 package az.news.presslab.controller;
 
+import az.news.presslab.service.FileStorageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -19,27 +21,17 @@ import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/api/files")
+@RequiredArgsConstructor
 public class FileUploadController {
+
+    private final FileStorageService fileStorageService;
 
     @Value("${file.upload-dir}")
     private String uploadDir;
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
-        try {
-            String fileName = file.getOriginalFilename();
-            Path filePath = Paths.get(uploadDir + File.separator + fileName);
-            Files.createDirectories(filePath.getParent());
-            Files.write(filePath, file.getBytes());
-            
-            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/api/files/download/")
-                    .path(fileName)
-                    .toUriString();
-            return fileDownloadUri;
-        } catch (IOException e) {
-            throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
-        }
+        return fileStorageService.storeFile(file);
     }
 
     @GetMapping("/download/{fileName:.+}")

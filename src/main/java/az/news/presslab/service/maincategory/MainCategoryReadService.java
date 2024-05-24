@@ -1,15 +1,12 @@
 package az.news.presslab.service.maincategory;
 
-import az.news.presslab.entity.MainCategoryEntity;
 import az.news.presslab.mapper.MainCategoryMapper;
 import az.news.presslab.repository.MainCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import response.MainCategoryReadResponse;
+import az.news.presslab.response.MainCategoryReadResponse;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class MainCategoryReadService {

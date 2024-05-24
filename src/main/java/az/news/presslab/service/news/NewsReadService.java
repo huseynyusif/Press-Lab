@@ -7,10 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import response.NewsReadResponse;
+import az.news.presslab.response.NewsReadResponse;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,8 +32,13 @@ public class NewsReadService {
 
 
     public NewsReadResponse getNewsById(int id) {
+
         return newsRepository.findById(id)
-                .map(newsMapper::toReadResponse)
+                .map(newsEntity ->{
+                    newsEntity.setViews(newsEntity.getViews() + 1);
+                    newsRepository.save(newsEntity);
+                    return newsMapper.toReadResponse(newsEntity);
+                        })
                 .orElseThrow(() -> new RuntimeException("News not found with id " + id));
     }
 
