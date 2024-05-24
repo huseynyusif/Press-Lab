@@ -1,0 +1,17 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=press-lab
+    username: ${USERNAME}
+    password: ${PASSWORD}
+
+  liquibase:
+    change-log: classpath:db.changelog/db.changelog-master.yaml
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+file:
+  upload-dir: /path/to/upload/directory
