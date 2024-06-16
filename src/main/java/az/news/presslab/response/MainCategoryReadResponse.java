@@ -1,4 +1,4 @@
-package response;
+package az.news.presslab.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

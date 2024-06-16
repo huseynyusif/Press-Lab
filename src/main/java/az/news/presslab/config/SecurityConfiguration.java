@@ -22,7 +22,7 @@ import java.util.List;
 @EnableWebSecurity
 @EnableMethodSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration {
+public class  SecurityConfiguration {
 
     private final PasswordEncoder passwordEncoder;
 

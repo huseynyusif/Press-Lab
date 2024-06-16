@@ -18,8 +18,6 @@ import java.time.LocalDateTime;
 public class NewsCreateRequest {
     private String title;
     private String content;
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-//    private LocalDateTime publicationDate;
     private String author;
     @JsonProperty("categoryId")
     private int categoryId;
