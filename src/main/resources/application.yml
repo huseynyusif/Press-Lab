@@ -1,10 +1,8 @@
-server:
-  port: 8083
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=press-lab
-    username: ${USERNAME}
-    password: ${PASSWORD}
+    url: https://press-lab-d3e63a641e78.herokuapp.com/
+    username: postgres
+    password: alma
 
   liquibase:
     change-log: classpath:db.changelog/db.changelog-master.yaml
