@@ -17,6 +17,8 @@ public class FileStorageService {
     @Value("${file.upload-dir}")
     private String uploadDir;
 
+    //Base64 try
+    //requestPart
     public String storeFile(MultipartFile file) {
         try {
             String fileName = file.getOriginalFilename();

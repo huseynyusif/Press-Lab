@@ -6,6 +6,7 @@ import az.news.presslab.mapper.NewsMapper;
 import az.news.presslab.repository.CategoryRepository;
 import az.news.presslab.repository.NewsRepository;
 import az.news.presslab.request.NewsCreateRequest;
+import az.news.presslab.response.NewsReadResponse;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -24,17 +25,18 @@ public class NewsCreateService {
         this.newsMapper = newsMapper;
     }
 
-    public NewsEntity createNews(NewsCreateRequest request) {
+    public NewsReadResponse createNews(NewsCreateRequest request) {
         CategoryEntity category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
 
         NewsEntity news = newsMapper.toCreateEntity(request,category);
         news.setId(null);
 
-        return newsRepository.save(news);
+        NewsEntity savedNews = newsRepository.save(news);
+        return newsMapper.toReadResponse(savedNews);
     }
 
-    public NewsEntity createNews(NewsCreateRequest request, String imagePath) {
+    public NewsReadResponse createNews(NewsCreateRequest request, String imagePath) {
         CategoryEntity category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
 
@@ -42,6 +44,7 @@ public class NewsCreateService {
         news.setId(null);
         news.setImagePath(imagePath);
 
-        return newsRepository.save(news);
+        NewsEntity savedNews = newsRepository.save(news);
+        return newsMapper.toReadResponse(savedNews);
     }
 }
